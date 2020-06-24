@@ -16,8 +16,5 @@ modify
 12
 11
 20
-<<<<<<< Updated upstream
 21
-=======
->>>>>>> Stashed changes
 22
