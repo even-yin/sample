@@ -13,7 +13,7 @@ function exe_cmd() {
         exit
     fi
 }
-commit_msg="auto commit"
+commit_msg="auto_commit"
 if [ -n "$1" ]; then
     commit_msg=$1
 fi
@@ -50,6 +50,7 @@ if [ "$current_local_commit_id" != "$current_origin_commit_id" ];then
     echo "本地分支[$current_local_branch]commitId:[$current_local_commit_id]和远程分支[$current_origin_branch]commitId:[$current_origin_commit_id]不一致"
     nedd_pull=true
 fi
+
 if [ $nedd_pull ]; then
     exe_cmd "$cmd_git_add"
     exe_cmd "$cmd_git_stash_save"
