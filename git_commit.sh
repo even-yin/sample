@@ -57,6 +57,6 @@ if [ $nedd_pull ]; then
     exe_cmd "$cmd_git_rebase_origin"
     exe_cmd "$cmd_git_stash_pop"
     exe_cmd "$cmd_git_add"
-    exe_cmd "$cmd_git_commit"
-    exe_cmd "$cmd_git_push"
 fi
+exe_cmd "$cmd_git_commit"
+exe_cmd "$cmd_git_push"
