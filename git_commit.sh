@@ -51,12 +51,12 @@ if [ "$current_local_commit_id" != "$current_origin_commit_id" ];then
     nedd_pull=true
 fi
 
-if [ $nedd_pull ]; then
+if [ $nedd_pull == true ]; then
     exe_cmd "$cmd_git_add"
     exe_cmd "$cmd_git_stash_save"
     exe_cmd "$cmd_git_rebase_origin"
     exe_cmd "$cmd_git_stash_pop"
-    exe_cmd "$cmd_git_add"
 fi
+exe_cmd "$cmd_git_add"
 exe_cmd "$cmd_git_commit"
 exe_cmd "$cmd_git_push"
