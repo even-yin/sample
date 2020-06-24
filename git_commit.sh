@@ -50,10 +50,12 @@ if [ "$current_local_commit_id" != "$current_origin_commit_id" ];then
     echo "本地分支[$current_local_branch]commitId:[$current_local_commit_id]和远程分支[$current_origin_branch]commitId:[$current_origin_commit_id]不一致"
     nedd_pull=true
 fi
-exe_cmd "$cmd_git_add"
-exe_cmd "$cmd_git_stash_save"
-exe_cmd "$cmd_git_rebase_origin"
-exe_cmd "$cmd_git_stash_pop"
-exe_cmd "$cmd_git_add"
-exe_cmd "$cmd_git_commit"
-exe_cmd "$cmd_git_push"
+if [ $nedd_pull ]; then
+    exe_cmd "$cmd_git_add"
+    exe_cmd "$cmd_git_stash_save"
+    exe_cmd "$cmd_git_rebase_origin"
+    exe_cmd "$cmd_git_stash_pop"
+    exe_cmd "$cmd_git_add"
+    exe_cmd "$cmd_git_commit"
+    exe_cmd "$cmd_git_push"
+fi
