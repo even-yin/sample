@@ -36,7 +36,7 @@ cmd_git_stash_save="git stash save 'Uncommitted changes before rebase'"
 cmd_git_stash_pop="git stash pop"
 cmd_git_rebase_origin="git rebase $current_origin_branch"
 cmd_git_add="git add ."
-cmd_git_commit="git commit -m '$commit_msg'"
+cmd_git_commit="git commit -m $commit_msg"
 cmd_git_push="git push $current_origin_branch"
 
 exe_cmd "$cmd_git_fetch_current"
