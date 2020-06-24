@@ -13,6 +13,10 @@ function exe_cmd() {
         exit
     fi
 }
+commit_msg="auto commit"
+if [ -n "$1" ]; then
+    commit_msg=$1
+fi
 
 origin_prefix="origin "
 get_current_branch
@@ -28,6 +32,11 @@ echo "当前远程分支: $current_origin_branch"
 
 cmd_git_fetch_current="git fetch $current_origin_branch"
 cmd_git_pull_current="git pull $current_origin_branch"
+cmd_git_stash_save="git stash save 'Uncommitted changes before rebase'"
+cmd_git_stash_pop="git stash pop"
+cmd_git_rebase_origin="git rebase $current_origin_branch"
+cmd_git_add="git add"
+cmd_git_commit="git commit -m '$commit_msg'"
 
 exe_cmd "$cmd_git_fetch_current"
 
@@ -40,5 +49,8 @@ if [ "$current_local_commit_id" != "$current_origin_commit_id" ];then
     echo "本地分支[$current_local_branch]commitId:[$current_local_commit_id]和远程分支[$current_origin_branch]commitId:[$current_origin_commit_id]不一致"
     nedd_pull=true
 fi
-
-exe_cmd "$cmd_git_pull_current"
+exe_cmd "$cmd_git_add"
+exe_cmd "$cmd_git_stash_save"
+exe_cmd "$cmd_git_rebase_origin"
+exe_cmd "$cmd_git_stash_pop"
+exe_cmd "$cmd_git_commit"
